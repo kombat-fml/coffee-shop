@@ -45,9 +45,9 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <ShopCard />
-              <ShopCard />
-              <ShopCard />
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
             </div>
           </div>
         </div>
@@ -57,12 +57,12 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
-import ShopCard from '@/components/ShopCard.vue';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
   components: {
     Navbar,
-    ShopCard,
+    ProductCard,
   },
 };
 </script>
