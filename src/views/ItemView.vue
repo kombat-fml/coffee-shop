@@ -7,7 +7,7 @@
             <Navbar />
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <PageTitle className="title-big" text="Our Coffee" />
       </div>
     </div>
     <section class="shop">
@@ -42,10 +42,12 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import PageTitle from '@/components/PageTitle.vue';
 
 export default {
   components: {
     Navbar,
+    PageTitle,
   },
 };
 </script>

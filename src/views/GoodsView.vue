@@ -7,7 +7,7 @@
             <Navbar />
           </div>
         </div>
-        <h1 class="title-big">For your pleasure</h1>
+        <PageTitle className="title-big" text="For your pleasure" />
       </div>
     </div>
     <section class="shop">
@@ -36,12 +36,42 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[0].name"
+                :price="goods[0].price"
+                :image="goods[0].image"
+              />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[1].name"
+                :price="goods[1].price"
+                :image="goods[1].image"
+              />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[2].name"
+                :price="goods[2].price"
+                :image="goods[2].image"
+              />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[3].name"
+                :price="goods[3].price"
+                :image="goods[3].image"
+              />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[4].name"
+                :price="goods[4].price"
+                :image="goods[4].image"
+              />
+              <ProductCard
+                classItem="shop__item"
+                :name="goods[5].name"
+                :price="goods[5].price"
+                :image="goods[5].image"
+              />
             </div>
           </div>
         </div>
@@ -53,11 +83,55 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import ProductCard from '@/components/ProductCard.vue';
+import PageTitle from '@/components/PageTitle';
 
 export default {
   components: {
     Navbar,
     ProductCard,
+    PageTitle,
+  },
+  data() {
+    return {
+      goods: [
+        {
+          id: 0,
+          name: 'Solimo Coffee Beans 2kg',
+          price: 10.73,
+          image: 'coffee-1.jpg',
+        },
+        {
+          id: 1,
+          name: 'Presto Coffee Beans 1kg',
+          price: 15.99,
+          image: 'coffee-2.jpg',
+        },
+        {
+          id: 2,
+          name: 'AROMISTICO Coffee 1kg',
+          price: 6.99,
+          image: 'coffee-3.jpg',
+        },
+        {
+          id: 3,
+          name: 'Solimo Coffee Beans 2kg',
+          price: 10.73,
+          image: 'coffee-1.jpg',
+        },
+        {
+          id: 4,
+          name: 'Presto Coffee Beans 1kg',
+          price: 15.99,
+          image: 'coffee-2.jpg',
+        },
+        {
+          id: 5,
+          name: 'AROMISTICO Coffee 1kg',
+          price: 6.99,
+          image: 'coffee-3.jpg',
+        },
+      ],
+    };
   },
 };
 </script>

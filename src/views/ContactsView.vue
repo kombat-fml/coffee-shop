@@ -7,7 +7,7 @@
             <Navbar />
           </div>
         </div>
-        <h1 class="title-big">Contact us</h1>
+        <PageTitle className="title-big" text="Contact us" />
       </div>
     </div>
     <section class="contacts">
@@ -85,11 +85,13 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import ProductCard from '@/components/ProductCard.vue';
+import PageTitle from '@/components/PageTitle.vue';
 
 export default {
   components: {
     Navbar,
     ProductCard,
+    PageTitle,
   },
 };
 </script>

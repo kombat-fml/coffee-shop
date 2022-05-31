@@ -7,7 +7,7 @@
             <Navbar />
           </div>
         </div>
-        <h1 class="title-big">Thank you</h1>
+        <PageTitle className="title-big" text="Thank you" />
       </div>
     </div>
     <section class="contacts">
@@ -35,10 +35,12 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import PageTitle from '@/components/PageTitle.vue';
 
 export default {
   components: {
     Navbar,
+    PageTitle,
   },
 };
 </script>
