@@ -37,40 +37,12 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <ProductCard
+                v-for="good in goods"
+                :key="good.id"
                 classItem="shop__item"
-                :name="goods[0].name"
-                :price="goods[0].price"
-                :image="goods[0].image"
-              />
-              <ProductCard
-                classItem="shop__item"
-                :name="goods[1].name"
-                :price="goods[1].price"
-                :image="goods[1].image"
-              />
-              <ProductCard
-                classItem="shop__item"
-                :name="goods[2].name"
-                :price="goods[2].price"
-                :image="goods[2].image"
-              />
-              <ProductCard
-                classItem="shop__item"
-                :name="goods[3].name"
-                :price="goods[3].price"
-                :image="goods[3].image"
-              />
-              <ProductCard
-                classItem="shop__item"
-                :name="goods[4].name"
-                :price="goods[4].price"
-                :image="goods[4].image"
-              />
-              <ProductCard
-                classItem="shop__item"
-                :name="goods[5].name"
-                :price="goods[5].price"
-                :image="goods[5].image"
+                :name="good.name"
+                :price="good.price"
+                :image="good.image"
               />
             </div>
           </div>
@@ -83,7 +55,7 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import ProductCard from '@/components/ProductCard.vue';
-import PageTitle from '@/components/PageTitle';
+import PageTitle from '@/components/PageTitle.vue';
 
 export default {
   components: {
