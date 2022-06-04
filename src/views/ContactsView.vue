@@ -60,7 +60,7 @@
                 </div>
                 <div class="col col-12">
                   <textarea
-                    v-model="form.textarea"
+                    v-model="form.message"
                     class="form-control"
                     name="message"
                     id="message"
@@ -100,7 +100,7 @@ export default {
         name: '',
         email: '',
         phone: '',
-        textarea: '',
+        message: '',
       },
     };
   },
