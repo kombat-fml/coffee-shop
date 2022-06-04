@@ -17,7 +17,7 @@
             <div class="title mt-5">Tell us about your tastes</div>
             <img class="beanslogo mt-5" src="@/assets/logo/Beans_logo_dark.svg" alt="Beans logo" />
 
-            <form action="#" class="mt-5">
+            <form @submit.prevent="submit" action="#" class="mt-5">
               <div class="form-group row">
                 <div class="col col-12 col-sm-3 d-flex align-items-center">
                   <label for="name-input" class="mb-0">
@@ -26,7 +26,7 @@
                   </label>
                 </div>
                 <div class="col col-12 col-sm-9">
-                  <input type="text" class="form-control" id="name-input" />
+                  <input v-model="form.name" type="text" class="form-control" id="name-input" />
                 </div>
               </div>
 
@@ -38,7 +38,7 @@
                   </label>
                 </div>
                 <div class="col col-12 col-sm-9">
-                  <input type="email" class="form-control" id="email-input" />
+                  <input v-model="form.email" type="email" class="form-control" id="email-input" />
                 </div>
               </div>
 
@@ -47,7 +47,7 @@
                   <label for="phone-input" class="mb-0"> Phone </label>
                 </div>
                 <div class="col col-12 col-sm-9">
-                  <input type="tel" class="form-control" id="phone-input" />
+                  <input v-model="form.phone" type="tel" class="form-control" id="phone-input" />
                 </div>
               </div>
 
@@ -60,6 +60,7 @@
                 </div>
                 <div class="col col-12">
                   <textarea
+                    v-model="form.textarea"
                     class="form-control"
                     name="message"
                     id="message"
@@ -71,7 +72,7 @@
 
               <div class="row">
                 <div class="col">
-                  <button class="btn btn-outline-dark send-btn">Send us</button>
+                  <button type="submit" class="btn btn-outline-dark send-btn">Send us</button>
                 </div>
               </div>
             </form>
@@ -92,6 +93,21 @@ export default {
     Navbar,
     ProductCard,
     PageTitle,
+  },
+  data() {
+    return {
+      form: {
+        name: '',
+        email: '',
+        phone: '',
+        textarea: '',
+      },
+    };
+  },
+  methods: {
+    submit() {
+      console.log(this.form);
+    },
   },
 };
 </script>
