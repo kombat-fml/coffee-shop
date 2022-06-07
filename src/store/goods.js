@@ -1,4 +1,4 @@
-const links = {
+const goods = {
   state: {
     goods: [
       {
@@ -43,7 +43,12 @@ const links = {
     getGoods(state) {
       return state.goods;
     },
+    getGoodsById(state) {
+      return (id) => {
+        return state.goods.find((card) => card.id === +id);
+      };
+    },
   },
 };
 
-export default links;
+export default goods;

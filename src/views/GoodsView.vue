@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="banner coffepage-banner">
+    <div class="banner goodspage-banner">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
@@ -37,12 +37,11 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <ProductCard
-                v-for="good in goods"
-                :key="good.id"
+                v-for="card in goods"
+                :key="card.id"
                 classItem="shop__item"
-                :name="good.name"
-                :price="good.price"
-                :image="good.image"
+                :card="card"
+                @onNavigate="navigate"
               />
             </div>
           </div>
@@ -57,6 +56,8 @@ import Navbar from '@/components/Navbar.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import PageTitle from '@/components/PageTitle.vue';
 
+import { navigate } from '../mixins/navigate';
+
 export default {
   components: {
     Navbar,
@@ -68,5 +69,11 @@ export default {
       return this.$store.getters['getGoods'];
     },
   },
+  data() {
+    return {
+      name: 'goods',
+    };
+  },
+  mixins: [navigate],
 };
 </script>

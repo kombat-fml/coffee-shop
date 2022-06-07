@@ -1,4 +1,4 @@
-const links = {
+const coffee = {
   state: {
     coffee: [
       {
@@ -43,7 +43,12 @@ const links = {
     getCoffee(state) {
       return state.coffee;
     },
+    getCoffeeById(state) {
+      return (id) => {
+        return state.coffee.find((card) => card.id === +id);
+      };
+    },
   },
 };
 
-export default links;
+export default coffee;

@@ -45,14 +45,7 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <ProductCard
-                v-for="bestseller in bestsellers"
-                :key="bestseller.id"
-                classItem="best__item"
-                :name="bestseller.name"
-                :price="bestseller.price"
-                :image="bestseller.image"
-              />
+              <ProductCard v-for="card in bestsellers" :key="card.id" classItem="best__item" :card="card" />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-const links = {
+const bestsellers = {
   state: {
     bestsellers: [
       {
@@ -28,4 +28,4 @@ const links = {
   },
 };
 
-export default links;
+export default bestsellers;

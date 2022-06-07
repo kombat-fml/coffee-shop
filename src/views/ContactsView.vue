@@ -85,13 +85,11 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import ProductCard from '@/components/ProductCard.vue';
 import PageTitle from '@/components/PageTitle.vue';
 
 export default {
   components: {
     Navbar,
-    ProductCard,
     PageTitle,
   },
   data() {

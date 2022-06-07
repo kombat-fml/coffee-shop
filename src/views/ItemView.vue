@@ -1,20 +1,20 @@
 <template>
   <main>
-    <div class="banner coffepage-banner">
+    <div class="banner" :class="pageName === 'coffee' ? 'coffepage-banner' : 'goodspage-banner'">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
             <Navbar />
           </div>
         </div>
-        <PageTitle className="title-big" text="Our Coffee" />
+        <PageTitle className="title-big" :text="card.name" />
       </div>
     </div>
     <section class="shop">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 offset-1">
-            <img class="shop__girl" src="@/assets/img/coffee_item.jpg" alt="coffee_item" />
+            <img class="shop__girl" :src="require(`@/assets/img/${card.image}`)" alt="coffee_item" />
           </div>
           <div class="col-lg-4">
             <div class="title">About it</div>
@@ -30,8 +30,8 @@
               ea commodo consequat.
             </div>
             <div class="shop__point">
-              <span>Price:</span>
-              <span class="shop__point-price">16.99$</span>
+              <span>Price: </span>
+              <span class="shop__point-price">{{ card.price | addCurrency }}</span>
             </div>
           </div>
         </div>
@@ -48,6 +48,15 @@ export default {
   components: {
     Navbar,
     PageTitle,
+  },
+  computed: {
+    pageName() {
+      return this.$route.name;
+    },
+    card() {
+      const pageGetter = this.pageName === 'coffee' ? 'getCoffeeById' : 'getGoodsById';
+      return this.$store.getters[pageGetter](this.$route.params.id);
+    },
   },
 };
 </script>
