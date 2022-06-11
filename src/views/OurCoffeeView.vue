@@ -32,19 +32,27 @@
         </div>
         <div class="line"></div>
         <div class="row">
-          <div class="col-lg-4 offset-2">
+          <div class="col-lg-5 offset-1">
             <form action="#" class="shop__search">
               <label class="shop__search-label" for="filter">Looking for</label>
-              <input id="filter" type="text" placeholder="start typing here..." class="shop__search-input" />
+              <input
+                ref="search"
+                id="filter"
+                type="text"
+                placeholder="start typing here..."
+                class="shop__search-input"
+                @input="onSearch($event)"
+              />
             </form>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-5">
             <div class="shop__filter">
-              <div class="shop__filter-label">Or filter</div>
+              <div class="shop__filter-label">Filters:</div>
               <div class="shop__filter-group">
-                <button class="shop__filter-btn">Brazil</button>
-                <button class="shop__filter-btn">Kenya</button>
-                <button class="shop__filter-btn">Columbia</button>
+                <button class="shop__filter-btn" @click="onSort('Brazil')">Brazil</button>
+                <button class="shop__filter-btn" @click="onSort('Kenya')">Kenya</button>
+                <button class="shop__filter-btn" @click="onSort('Columbia')">Columbia</button>
+                <button class="shop__filter-btn shop__filter-reset" @click="onReset">Reset</button>
               </div>
             </div>
           </div>
@@ -68,6 +76,8 @@
 </template>
 
 <script>
+import { debounce } from 'debounce';
+
 import Navbar from '@/components/Navbar.vue';
 import ProductCard from '@/components/ProductCard.vue';
 import PageTitle from '@/components/PageTitle.vue';
@@ -84,6 +94,14 @@ export default {
     coffee() {
       return this.$store.getters['getCoffee'];
     },
+    searchValue: {
+      set(value) {
+        this.$store.dispatch('setSearchValue', value);
+      },
+      get() {
+        return this.$store.getters['getSearchValue'];
+      },
+    },
   },
   data() {
     return {
@@ -97,6 +115,27 @@ export default {
       .then((data) => {
         this.$store.dispatch('setCoffeeData', data);
       });
+  },
+  methods: {
+    onSearch: debounce(function (event) {
+      this.onSort(event.target.value);
+    }, 500),
+    onSort(value) {
+      // this.$store.dispatch('setSortValue', value);
+      fetch(`http://localhost:3000/coffee?q=${value}`)
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setCoffeeData', data);
+        });
+    },
+    onReset() {
+      this.$refs.search.value = '';
+      fetch(`http://localhost:3000/coffee`)
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setCoffeeData', data);
+        });
+    },
   },
 };
 </script>

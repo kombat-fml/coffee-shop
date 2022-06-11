@@ -113,10 +113,7 @@ export default {
   },
   data() {
     return {
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
+      ...this.getInitialState(),
     };
   },
   validations() {
@@ -132,6 +129,14 @@ export default {
     };
   },
   methods: {
+    getInitialState() {
+      return {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      };
+    },
     async submit() {
       const isFormCorrect = await this.v$.$validate();
       if (!isFormCorrect) return;
@@ -152,8 +157,7 @@ export default {
       });
 
       this.v$.$reset();
-      const initialData = this.$options.data.call(this);
-      Object.assign(this.$data, initialData);
+      Object.assign(this.$data, this.getInitialState());
     },
   },
 };
