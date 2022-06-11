@@ -59,7 +59,6 @@
                 :card="card"
                 @onNavigate="navigate"
               />
-              <!-- /our-coffee/item -->
             </div>
           </div>
         </div>
@@ -92,5 +91,12 @@ export default {
     };
   },
   mixins: [navigate],
+  mounted() {
+    fetch('http://localhost:3000/coffee')
+      .then((res) => res.json())
+      .then((data) => {
+        this.$store.dispatch('setCoffeeData', data);
+      });
+  },
 };
 </script>
